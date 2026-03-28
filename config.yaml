@@ -1,0 +1,87 @@
+# config.yaml - 系统配置文件
+# 复制此文件为 config.local.yaml 并填入真实配置
+
+# 数据源配置
+data:
+  # AKShare (免费，无需token)
+  akshare:
+    enabled: true
+    timeout: 30
+
+  # Tushare (需注册获取token: https://tushare.pro)
+  tushare:
+    enabled: false
+    token: "your_tushare_token_here"
+
+# 同花顺交易账户
+broker:
+  # 交易软件类型: ths (同花顺), xw (新一代), gj (国金)
+  type: "ths"
+  # 同花顺客户端路径 (Windows)
+  exe_path: "C:/同花顺软件/同花顺/xiadan.exe"
+  # 登录账号 (资金账号)
+  account: "your_account_here"
+  # 交易密码
+  password: "your_password_here"
+  # 通信端口
+  port: 2333
+
+# 数据库配置
+database:
+  # SQLite (默认，无需额外安装)
+  sqlite:
+    enabled: true
+    path: "data/stock.db"
+  # Redis (可选，用于实时缓存)
+  redis:
+    enabled: false
+    host: "localhost"
+    port: 6379
+    db: 0
+
+# 风控参数
+risk:
+  # 单股最大仓位比例
+  max_position_ratio: 0.2
+  # 总仓位上限
+  max_total_ratio: 0.8
+  # 单笔最大亏损比例（止损线）
+  stop_loss_ratio: 0.05
+  # 单笔最大盈利目标（止盈线）
+  take_profit_ratio: 0.10
+  # 最大持仓股数
+  max_holding_count: 10
+  # 每日最大交易次数
+  max_daily_trades: 20
+
+# 策略配置
+strategy:
+  # 默认策略
+  default: "ma_cross"
+  # 是否开启实盘（false=模拟/仅信号）
+  live_trading: false
+  # 交易时间段
+  trading_hours:
+    morning_start: "09:30"
+    morning_end: "11:30"
+    afternoon_start: "13:00"
+    afternoon_end: "15:00"
+
+# Web界面
+web:
+  host: "127.0.0.1"
+  port: 8501
+  debug: false
+
+# 日志配置
+logging:
+  level: "INFO"
+  path: "logs/"
+  retention: "30 days"
+  rotation: "1 day"
+
+# 监控与通知
+notification:
+  # 企业微信/钉钉/微信推送 (可选)
+  enabled: false
+  webhook_url: ""

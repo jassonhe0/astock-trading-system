@@ -1,0 +1,9 @@
+# 可选依赖 - 同花顺自动交易接口
+# 安装命令: pip install -r requirements-broker.txt -i https://pypi.org/simple/
+#
+# 注意: easytrader 仅支持 Python 3.8~3.10，Python 3.13 可能不兼容
+# 如果安装失败，系统会自动进入模拟交易模式，不影响行情分析和回测功能
+
+easytrader>=0.21.0
+websocket-client>=1.6.0
+pywinauto>=0.6.8
